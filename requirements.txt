@@ -1,0 +1,10 @@
+# Used inside the Linux container (see README). Triton wheels are Linux-only.
+torch
+triton
+jupyterlab
+ipykernel
+numpy
+matplotlib
+pandas
+tabulate
+pytest

@@ -1,0 +1,20 @@
+services:
+  triton-course:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      # Mount the whole course repo so /workspace has scripts/, work/, etc.
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      # Set to 1 when the container has no usable GPU (kernels run on the interpreter; slower, fine for learning).
+      TRITON_INTERPRET: "${TRITON_INTERPRET:-0}"
+    # On Linux with NVIDIA Container Toolkit, uncomment for GPU-backed runs and benchmarks.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
