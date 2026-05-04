@@ -15,6 +15,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 WORKDIR /workspace
 EXPOSE 8888
 
-# Local-only convenience; do not expose this image on a network you do not trust.
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", \
-     "--ServerApp.token=triton", "--ServerApp.allow_origin=*", "--allow-root"]
+# No token/password: fine only when the port is bound to localhost. Do not expose on a network.
+CMD ["sh", "-c", "exec jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --ServerApp.token= --ServerApp.password= --ServerApp.allow_origin='*' --allow-root"]

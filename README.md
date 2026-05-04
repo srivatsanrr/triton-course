@@ -16,11 +16,11 @@ Your system Python was 3.9; current Triton expects **CPython 3.10–3.14**. The 
    ```bash
    cd triton-course
    ./scripts/sync-tutorials.sh
-   docker compose build
-   TRITON_INTERPRET=1 docker compose up
+   docker-compose build
+   TRITON_INTERPRET=1 docker-compose up
    ```
 
-3. Open Jupyter Lab: **http://127.0.0.1:8888** — token **`triton`** (set in the `Dockerfile`; change it if you expose the port beyond localhost).
+3. Open Jupyter Lab: **http://127.0.0.1:8888** — no login prompt (token and password are disabled in the `Dockerfile` for local use only). If you publish port 8888 beyond localhost, set a token or password in the `Dockerfile` / `jupyter_server_config.py` instead.
 
 The compose file mounts the **entire `triton-course` directory** to `/workspace` so `scripts/` and `work/` are both visible in the container.
 
